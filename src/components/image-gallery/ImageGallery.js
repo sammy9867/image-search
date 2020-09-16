@@ -1,7 +1,6 @@
 import React, { useRef, useCallback }from 'react';
 import { useThemeValue, useQueryValue } from '../../context';
 import { useImageSearch } from '../../hooks';
-import { CircleLoading } from 'react-loadingg';
 
 import './ImageGallery.css'
 
