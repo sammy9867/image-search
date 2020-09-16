@@ -1,0 +1,51 @@
+div {
+    top: 5px;
+    position: relative;
+}
+
+div > span {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+}
+
+div > input[type=text] {
+    width: 300px;
+    height: 2.5em;
+    padding-left: 40px;
+    border-radius: 25px;
+    text-indent: 10px;  
+    border: 0px;
+}
+
+div > input[type=text]:focus{
+    outline: none;
+}
+
+/***** Light Theme *****/
+.search-container > span {
+    color: #656C75;
+}
+
+.search-container > input[type=text] {
+    background-color: #F0F2F5;
+    color: #656C75;
+}
+
+.search-container > input[type=text]::placeholder{
+    color: #656C75;
+}
+
+/***** Dark Theme *****/
+.search-container-dark > span {
+    color: #ACAFB4;
+}
+
+.search-container-dark > input[type=text] {
+    background-color: #3A3B3C;
+    color: #ACAFB4;
+}
+
+.search-container-dark > input[type=text]::placeholder  {
+    color: #ACAFB4;
+}
