@@ -7,10 +7,14 @@ export const Header = () => {
     const { isLightTheme, setIsLightTheme } = useThemeValue();
 
     return (
-        <header className={isLightTheme ? "header-light" : "header-dark" } data-testid="header">
+        <header 
+            className={isLightTheme ? "header-light" : "header-dark" }
+            data-testid={isLightTheme ? "header-light" : "header-dark" }
+        >
             <span> <SearchBar /></span>
             <label>
                 <input 
+                    aria-label="switch-theme"
                     type="checkbox" 
                     onClick={() => setIsLightTheme(!isLightTheme)} />
                 <span className="check"></span>

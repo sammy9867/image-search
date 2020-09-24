@@ -2,6 +2,7 @@ import {
     SearchQueryContext,
     SearchQueryContextProvider,
     useQueryValue,
+    usePageNumberValue,
 } from './query-context.js';
 
 import {
@@ -14,6 +15,7 @@ export {
     SearchQueryContext,
     SearchQueryContextProvider,
     useQueryValue,
+    usePageNumberValue,
     ThemeContext,
     ThemeContextProvider,
     useThemeValue,

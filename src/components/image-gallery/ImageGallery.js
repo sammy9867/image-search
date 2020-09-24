@@ -1,5 +1,5 @@
 import React, { useRef, useCallback }from 'react';
-import { useThemeValue, useQueryValue } from '../../context';
+import { useThemeValue, useQueryValue, usePageNumberValue } from '../../context';
 import { useImageSearch } from '../../hooks';
 import { FaDownload } from 'react-icons/fa';
 
@@ -9,9 +9,10 @@ export const ImageGallery = () => {
 
     const { isLightTheme } = useThemeValue();
 
-    const { setPageNumber } = useQueryValue();
+    const { query } = useQueryValue();
+    const { pageNumber, setPageNumber } = usePageNumberValue();
     
-    const { images, hasMore, loading } = useImageSearch();
+    const { images, hasMore, loading } = useImageSearch(query, pageNumber);
 
     isLightTheme ? 
       document.getElementsByTagName('body')[0].setAttribute('style', 'background-color:#F0F2F5') :
@@ -23,9 +24,9 @@ export const ImageGallery = () => {
         if (loading) return
         if (observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && hasMore) {
-            setPageNumber(prevPageNumber => prevPageNumber + 1);
-        }
+          if (entries[0].isIntersecting && hasMore) {
+              setPageNumber(prevPageNumber => prevPageNumber + 1);
+          }
         })
         if (node) observer.current.observe(node);
     }, [loading, hasMore])
@@ -37,7 +38,7 @@ export const ImageGallery = () => {
           headers: {}
         })
           .then(response => {
-            response.arrayBuffer().then(function(buffer) {
+            response.arrayBuffer().then((buffer) => {
               const url = window.URL.createObjectURL(new Blob([buffer]));
               const link = document.createElement("a");
               link.href = url;
@@ -52,43 +53,51 @@ export const ImageGallery = () => {
       };
 
     return (
-        <div className="image-gallery ">
+        <div 
+          className="image-gallery "
+          data-testid="image-gallery"
+        >
            { 
             <ul>
                 {images.map((image, index) => {
                     if (images.length === index + 1) {
                       return  (
-                        <li key={index} className="list"> {    
-                          <div className="img-container">
-                            <img 
-                              alt={image.alt_description}
-                              className="card"  
-                              ref={lastImageElementRef} 
-                              src={image.urls.regular}
-                            />
-                            <button
-                              className="downloadButton"
+                        <li key={index} className="img-list-item" data-testid="img-list-item"> {    
+                          <div className="img-container" data-testid="img-container">
+                             <button
+                              className="download-button"
+                              data-testid="download-button"
                               onClick={() => { downloadImage(image.id, image.urls.regular)}}
                              >
                                 <FaDownload color="black" />
                             </button> 
+                            <img 
+                              alt={image.alt_description}
+                              className="img-card"  
+                              data-testid="img-card"
+                              ref={lastImageElementRef} 
+                              src={image.urls.regular}
+                            />
+  
                           </div> }   
                         </li> )
                     } else {
                         return  (
-                            <li key={index} className="list"> { 
-                              <div className="img-container">
-                                 <img 
-                                    alt={image.alt_description}
-                                    className="card"  
-                                    src={image.urls.regular}
-                                />
+                            <li key={index} className="img-list-item" data-testid="img-list-item"> { 
+                              <div className="img-container" data-testid="img-container">
                                 <button
-                                  className="downloadButton"
+                                  className="download-button"
+                                  data-testid="download-button"
                                   onClick={() => { downloadImage(image.id, image.urls.regular)}}
                                 >
                                     <FaDownload color="black" />
                                 </button>
+                                 <img 
+                                    alt={image.alt_description}
+                                    className="img-card"  
+                                    data-testid="img-card"
+                                    src={image.urls.regular}
+                                />
                              </div> }    
                             </li> )
                     }})}

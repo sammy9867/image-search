@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
-import { useQueryValue } from '../context';
 import { BASE_URL, CLIENT_ID } from '../util/constants';
 import axios from 'axios';
 
-export const useImageSearch = () => {
+export const useImageSearch = (query, pageNumber) => {
 
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [images, setImages] = useState([])
   const [hasMore, setHasMore] = useState(false)
-   
-  const { query, pageNumber } = useQueryValue();
     
   useEffect(() => {
     setImages([]);

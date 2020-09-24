@@ -18,12 +18,19 @@ $ git clone https://github.com/sammy9867/image-search.git
 ```
 
 ### Deployment
-* After you have cloned the repository, navigate to *.env* file and enter your access key.
+* After you have cloned the repository, switch to the directory containing the repository and install the dependencies using npm.
+```
+$ npm install
+```
+* Navigate to the *.env* file and enter your access key.
 ```
 REACT_APP_BASE_URL=https://api.unsplash.com/search/photos
 REACT_APP_CLIENT_ID=YOUR_ACCESS_KEY
 ```
-* You can then build and run the project using npm.
+* Finally, use the following command to the run the application:
+```
+$ npm start
+```
 
 ## Built With
 * React Hooks
