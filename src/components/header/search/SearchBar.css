@@ -49,3 +49,13 @@ div > input[type=text]:focus{
 .search-container-dark > input[type=text]::placeholder  {
     color: #ACAFB4;
 }
+
+@media screen and (max-width: 600px) {
+    div > input[type=text] {
+        width: 80%;
+    }
+
+    div > input[type=text]::placeholder {
+        font-size: 12px;
+    }   
+}

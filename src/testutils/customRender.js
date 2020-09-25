@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import {  ThemeContextProvider, SearchQueryContextProvider, useThemeValue, usePageNumberValue, useQueryValue   } from '../context';
+import { ThemeContextProvider, SearchQueryContextProvider, useThemeValue, usePageNumberValue, useQueryValue } from '../context';
 
 export const customRender = (ui) => {
     return render(

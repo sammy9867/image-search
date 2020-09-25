@@ -39,5 +39,4 @@ export const useImageSearch = (query, pageNumber) => {
   }, [query, pageNumber]);
   
   return { loading, error, images, hasMore }
-
 }
