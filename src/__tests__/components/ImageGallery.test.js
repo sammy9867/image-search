@@ -9,6 +9,6 @@ describe('<ImageGallery />', () => {
         const { queryByTestId } = customRender( <ImageGallery />);
 
         expect(queryByTestId('image-gallery')).toBeTruthy();
-        expect(queryByTestId('img-list-item')).toBeFalsy();
+        expect(queryByTestId('image-gallery-ul')).toBeTruthy();
     });
 });

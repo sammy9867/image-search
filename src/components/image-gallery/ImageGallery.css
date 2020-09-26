@@ -67,6 +67,31 @@ button:hover + img {
     z-index: 0;
 }
 
+.cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; 
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.download-icon {
+    z-index: 4;
+}
+
+.white-cover {
+    background-color: #F0F2F5;
+    z-index: 5;
+}
+
+.black-cover {
+    background-color: black;
+    z-index: 5;
+}
+
+
 @media screen and (max-width: 600px) {
     ul {
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -75,7 +100,13 @@ button:hover + img {
     }
 
     button {
-        width: 25px;
-        height: 25px;
+        width: 20px;
+        height: 20px;
     }
+    .cover {
+        width: 20px;
+        height: 20px;
+    }
+
+    
 }
