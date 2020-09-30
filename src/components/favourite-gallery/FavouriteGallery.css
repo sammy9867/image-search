@@ -1,4 +1,4 @@
-.image-gallery {
+.fav-gallery {
     padding-top: 100px;  
     padding-bottom: 50px;
 }
@@ -28,7 +28,5 @@ ul {
     .cover {
         width: 20px;
         height: 20px;
-    }
-
-    
+    }   
 }

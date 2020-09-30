@@ -11,6 +11,12 @@ import {
     useThemeValue,
 } from './theme-context';
 
+import {
+    FavouriteContext,
+    FavouriteContextProvider,
+    useFavouriteValue,
+} from './favourite-context';
+
 export {
     SearchQueryContext,
     SearchQueryContextProvider,
@@ -19,4 +25,7 @@ export {
     ThemeContext,
     ThemeContextProvider,
     useThemeValue,
+    FavouriteContext,
+    FavouriteContextProvider,
+    useFavouriteValue
 };
