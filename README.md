@@ -22,7 +22,7 @@ $ git clone https://github.com/sammy9867/image-search.git
 ```
 $ npm install
 ```
-* Navigate to the *.env* file and enter your access key.
+* Create a *.env* file and add the following. Enter your own access key.
 ```
 REACT_APP_BASE_URL=https://api.unsplash.com/search/photos
 REACT_APP_CLIENT_ID=YOUR_ACCESS_KEY
@@ -35,7 +35,8 @@ $ npm start
 ## Built With
 * React Hooks
 * Context API
-* Axios
+* React-Axios
+* React-Router
 
 ## Contributing
 All pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
