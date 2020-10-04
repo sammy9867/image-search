@@ -30,11 +30,13 @@ jobs:
     - name: Run the tests
       run: npm test
       env:
+        REACT_APP_BASE_URL: 'https://api.unsplash.com/search/photos'
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
 
     - name: Build
       run: npm run build
       env:
+        REACT_APP_BASE_URL: 'https://api.unsplash.com/search/photos'
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
 
     - name: Deploy
@@ -48,3 +50,5 @@ jobs:
         user_email: 'github-actions[bot]@users.noreply.github.com'
         github_token: ${{ secrets.DEPLOY_ACCESS_TOKEN }}
         repository: ${{ github.repository }}
+        REACT_APP_BASE_URL: 'https://api.unsplash.com/search/photos'
+        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
