@@ -34,7 +34,7 @@ jobs:
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
 
     - name: Build
-      run: npm run build
+      run: CI=false npm run build
       env:
         REACT_APP_BASE_URL: 'https://api.unsplash.com/search/photos'
         REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
