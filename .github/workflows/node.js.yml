@@ -29,9 +29,13 @@ jobs:
 
     - name: Run the tests
       run: npm test
+      env:
+        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
 
     - name: Build
       run: npm run build
+      env:
+        REACT_APP_CLIENT_ID: ${{ secrets.REACT_APP_CLIENT_ID }}
 
     - name: Deploy
       run: |
