@@ -46,7 +46,6 @@ export const FavouriteContextProvider = ({ children }) => {
 
     useEffect(() => {
         addItemToStorage("fav", globalState);
-        console.log("useEff called")
     }, [globalState])
 
     return (

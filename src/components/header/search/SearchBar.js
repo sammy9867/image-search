@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { useThemeValue, useQueryValue, usePageNumberValue } from '../../../context';
-import './SearchBar.css'
+import './SearchBar.css';
 
 export const SearchBar = () => {
 
@@ -15,9 +15,9 @@ export const SearchBar = () => {
         >  
             <span data-testid="search-icon"> <FaSearch /> </span>
             <input 
-                aria-label="search-query"
                 type="text" 
                 className="search-bar"
+                aria-label="search bar"
                 placeholder="Search..."
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {

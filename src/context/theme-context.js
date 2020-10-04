@@ -13,7 +13,6 @@ export const  ThemeContextProvider = ({ children }) => {
         : initialState;
   });
 
-  
   useEffect(() => {
     addItemToStorage("theme", isLightTheme);
 }, [isLightTheme]);

@@ -1,8 +1,7 @@
 import React from 'react';
-import { useFavouriteValue } from '../../context';
 import { IndividualImage } from '../individual-image/IndividualImage';
-
-import './FavouriteGallery.css'
+import { useFavouriteValue } from '../../context';
+import './FavouriteGallery.css';
 
 export const FavouriteGallery = () => {
 
@@ -10,11 +9,11 @@ export const FavouriteGallery = () => {
 
   return (
       <div 
-        className="fav-gallery "
+        className="fav-gallery"
         data-testid="fav-gallery"
       >
          { 
-          <ul data-testid="fav-gallery-ul">
+          <ul className="fav-gallery-ul" data-testid="fav-gallery-ul">
               {globalState.favList.map((fav, index) => { 
                 return (                  
                   <IndividualImage

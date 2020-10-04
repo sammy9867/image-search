@@ -1,5 +1,5 @@
 import React from 'react';
-import { IndividualImage } from '../../components/image-gallery/IndividualImage';
+import { IndividualImage } from '../../components';
 import { customRender, cleanup } from '../../testutils/customRender';
 
 afterEach(cleanup);

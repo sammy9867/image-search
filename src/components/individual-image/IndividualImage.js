@@ -1,43 +1,44 @@
 import React, { useState, useRef }from 'react';
-import { useFavouriteValue, useThemeValue } from '../../context';
 import { FaDownload, FaHeart } from 'react-icons/fa';
-import './IndividualImage.css'
+import { useFavouriteValue, useThemeValue } from '../../context';
+import './IndividualImage.css';
 
 export const IndividualImage = ({index, id, regular, alt_description}) => {
 
     const { isLightTheme } = useThemeValue();
-    const {  globalState, dispatch } = useFavouriteValue();
+    const { globalState, dispatch } = useFavouriteValue();
 
-    const [ isFavourite, setIsFavourite ] = useState(globalState.favList.find(x => x.id === id));
-    const coverRef = useRef(null);
-    const favCoverRef = useRef(null);
+    const [isFavourite, setIsFavourite] = useState(globalState.favList.find(x => x.id === id));
+    
+    const downloadCoverRef = useRef(null);
+    const favouriteCoverRef = useRef(null);
   
-    function displayButton() {
-        coverRef.current.style.zIndex = 0;
-        favCoverRef.current.style.zIndex = 0;
+    function displayButtons() {
+        downloadCoverRef.current.style.zIndex = 0;
+        favouriteCoverRef.current.style.zIndex = 0;
     }
 
     const handleFavorite = () => {
-      var action;
-      if(isFavourite) {
-        action = {
-          type: "REMOVE_FAV",
-          payload: {
-            favImage: { id }
-          }
-        };
-      }
-      else {
-        action = {
-          type: "ADD_FAV",
-          payload: {
-            favImage: { id, regular, alt_description }
-          }
-        };
-      }
-    
-      dispatch(action);
-      setIsFavourite(!isFavourite);
+        var action;
+        if(isFavourite) {
+          action = {
+            type: "REMOVE_FAV",
+            payload: {
+              favImage: { id }
+            }
+          };
+        }
+        else {
+          action = {
+            type: "ADD_FAV",
+            payload: {
+              favImage: { id, regular, alt_description }
+            }
+          };
+        }
+      
+        dispatch(action);
+        setIsFavourite(!isFavourite);
     }
 
     const downloadImage = (idd, imageUrl)  => {
@@ -58,7 +59,7 @@ export const IndividualImage = ({index, id, regular, alt_description}) => {
           .catch(err => {
             console.log(err);
           });
-      };
+    };
 
     return (
         <li key={index} className="img-list-item" data-testid="img-list-item"> { 
@@ -66,38 +67,36 @@ export const IndividualImage = ({index, id, regular, alt_description}) => {
               <button
                 className="favourite-button"
                 data-testid="favourite-button"
+                aria-label="favourite button"
                 onClick={() => {handleFavorite()}}
               >
                 <span className="cover favourite-icon"> 
-                <FaHeart
-                 color={isFavourite ? "red" : isLightTheme ? "black" : "white"} /> 
-                 </span> 
-                <span ref={favCoverRef}
-                className= {isLightTheme ? "cover white-cover" : "cover black-cover"}
-                >        
-                </span>
+                  <FaHeart color={isFavourite ? "red" : isLightTheme ? "black" : "white"} /> 
+                </span> 
+                <span ref={favouriteCoverRef} className= {isLightTheme ? "cover white-cover" : "cover black-cover"} />        
               </button>
 
               <button
                 className="download-button"
                 data-testid="download-button"
+                aria-label="download button"
                 onClick={() => { downloadImage(id, regular)}}
               >
-                <span className="cover download-icon"> <FaDownload color={isLightTheme ? "black" : "white"} /> </span> 
-                <span ref={coverRef}
-                className= {isLightTheme ? "cover white-cover" : "cover black-cover"}
-                >        
-                </span>
+                <span className="cover download-icon"> 
+                  <FaDownload color={isLightTheme ? "black" : "white"} /> 
+                </span> 
+                <span ref={downloadCoverRef} className= {isLightTheme ? "cover white-cover" : "cover black-cover"} />        
               </button>
+
                <img 
                   alt={alt_description}
+                  aria-label={alt_description}
                   className="img-card"  
                   data-testid="img-card"
-                  onLoad={() => {displayButton()}}
+                  onLoad={() => {displayButtons()}}
                   src={regular}
               />
-           </div> }    
+           </div> }
           </li> 
     );
-
 }

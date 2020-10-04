@@ -9,6 +9,26 @@ li {
     top: 0;
 }
 
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; 
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    z-index: 5;
+    border-radius: 5px;
+}
+
+.favourite-button {
+    top: 10px;
+}
+
+.download-button {
+    bottom: 10px;
+}
+
 .img-card {
     max-width: 100%;
     max-height: 100%;
@@ -25,44 +45,8 @@ li {
     z-index: 0;
 }
 
-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute; 
-    width: 30px;
-    height: 30px;
-    right: 10px;
-    z-index: 5;
-    border-radius: 5px;
-}
-
-input[type=checkbox] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute; 
-    width: 30px;
-    height: 30px;
-    right: 10px;
-    z-index: 5;
-    border-radius: 5px;
-}
-
-.download-button {
-    bottom: 10px;
-}
-
-.favourite-button {
-    top: 10px;
-}
-
-button:hover, input[type=checkbox] {
+button:hover {
     cursor: pointer;
-}
-input[type=checkbox] ~ .img-card {
-    transform: translateY(-3px) scale(1.1);   
-    z-index: 0;
 }
 
 button:hover ~ .img-card {
@@ -98,18 +82,24 @@ button:hover ~ .img-card {
     z-index: 5;
 }
 
-
-
 @media screen and (max-width: 600px) {
-    
     button {
         width: 20px;
         height: 20px;
     }
+
     .cover {
         width: 20px;
         height: 20px;
     }
 
-    
+    .favourite-icon {
+        width: 10px;
+        height: 10px;
+    }
+
+    .download-icon {
+        width: 10px;
+        height: 10px;
+    }
 }

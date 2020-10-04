@@ -1,13 +1,13 @@
 import React from 'react';
-import { ImageGallery } from '../../components';
+import { Home } from '../../views';
 import { customRender, cleanup } from '../../testutils/customRender';
 
 afterEach(cleanup);
 
-describe('<ImageGallery />', () => {
-    it('renders the ImageGallery component',  () => {
-        const { queryByTestId } = customRender( <ImageGallery />);
-
+describe('<Home />', () => {
+    it('renders the Home view', () => {
+        const { queryByTestId } = customRender( <Home />);
+        
         expect(queryByTestId('image-gallery')).toBeTruthy();
         expect(queryByTestId('image-gallery-ul')).toBeTruthy();
     });

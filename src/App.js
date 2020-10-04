@@ -7,7 +7,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-
 import './App.css';
 
 export const App = () => {
@@ -17,13 +16,12 @@ export const App = () => {
           <FavouriteContextProvider>
             <SearchQueryContextProvider>
               <Router>
+                  <Header /> 
                   <Switch>
                       <Route exact path="/">
-                          <Header /> 
                           <Home />
                       </Route>
-                      <Route path="/favourite">
-                          <Header />
+                      <Route exact path="/favourite">
                           <Favourite />
                       </Route>
                       <Router path="*">
