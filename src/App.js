@@ -18,10 +18,10 @@ export const App = () => {
               <Router>
                   <Header /> 
                   <Switch>
-                      <Route exact path="/">
+                      <Route exact path="/image-search">
                           <Home />
                       </Route>
-                      <Route exact path="/favourite">
+                      <Route exact path="/image-search/favourite">
                           <Favourite />
                       </Route>
                       <Router path="*">

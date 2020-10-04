@@ -27,14 +27,14 @@ export const Header = () => {
             <nav className={getNavClassName()}>
                 <ul className="topbar-items">
                     <li className="navbar-li" data-testid="home-link" onClick={() => {setSideBar(!sideBar)}}>
-                        <Link to="/">
+                        <Link to="/image-search">
                              <span className="nav-visibility"> <FaHome color={isLightTheme ? "black" : "white"}/> </span>
                              <span className={isLightTheme ? "nav-text nav-light" : "nav-text nav-dark"} ><b>Home</b></span>
                         </Link>
                     </li>
 
                      <li className="navbar-li" data-testid="fav-link" onClick={() => {setSideBar(!sideBar)}}>
-                        <Link to="/favourite">
+                        <Link to="/image-search/favourite">
                             <span className="nav-visibility"> <FaHeart color={isLightTheme ? "black" : "white"}/> </span>
                             <span className={isLightTheme ? "nav-text nav-light" : "nav-text nav-dark"}><b>Favourite</b></span>
                         </Link>
