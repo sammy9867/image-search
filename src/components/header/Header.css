@@ -85,6 +85,14 @@ header > label {
     font-size: 18px;
 }
 
+.nav-selected-light {
+    color: #34a1cd ;
+}
+
+.nav-selected-dark {
+    color: #ade6e6 ;
+}
+
 input[type=checkbox] {
     -webkit-appearance: none;
     visibility: hidden;

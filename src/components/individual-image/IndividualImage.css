@@ -19,6 +19,7 @@ button {
     right: 10px;
     z-index: 5;
     border-radius: 5px;
+    outline: none;
 }
 
 .favourite-button {

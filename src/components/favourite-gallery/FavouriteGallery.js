@@ -14,10 +14,10 @@ export const FavouriteGallery = () => {
       >
          { 
           <ul className="fav-gallery-ul" data-testid="fav-gallery-ul">
-              {globalState.favList.map((fav, index) => { 
+              {globalState.favList.map((fav) => { 
                 return (                  
                   <IndividualImage
-                    index={index}
+                    key={fav.id}
                     id={fav.id}
                     regular={fav.regular}
                     alt_description={fav.alt_description}

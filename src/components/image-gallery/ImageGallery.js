@@ -31,10 +31,10 @@ export const ImageGallery = () => {
       >
          { 
           <ul className="image-gallery-ul" data-testid="image-gallery-ul">
-              {images.map((image, index) => { 
+              {images.map((image) => { 
                 return (                  
                   <IndividualImage
-                    index={index}
+                    key={image.id}
                     id={image.id}
                     regular={image.urls.regular}
                     alt_description={image.alt_description}

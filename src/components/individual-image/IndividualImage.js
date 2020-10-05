@@ -1,15 +1,15 @@
-import React, { useState, useRef }from 'react';
+import React, { useState, useRef } from 'react';
 import { FaDownload, FaHeart } from 'react-icons/fa';
 import { useFavouriteValue, useThemeValue } from '../../context';
 import './IndividualImage.css';
 
-export const IndividualImage = ({index, id, regular, alt_description}) => {
+export const IndividualImage = ({id, regular, alt_description}) => {
 
     const { isLightTheme } = useThemeValue();
     const { globalState, dispatch } = useFavouriteValue();
 
     const [isFavourite, setIsFavourite] = useState(globalState.favList.find(x => x.id === id));
-    
+
     const downloadCoverRef = useRef(null);
     const favouriteCoverRef = useRef(null);
   
@@ -18,9 +18,10 @@ export const IndividualImage = ({index, id, regular, alt_description}) => {
         favouriteCoverRef.current.style.zIndex = 0;
     }
 
-    const handleFavorite = () => {
-        var action;
+    const handleFavourite = (id, regular, alt_description) => {
+        let action;
         if(isFavourite) {
+          console.log("Rem")
           action = {
             type: "REMOVE_FAV",
             payload: {
@@ -29,6 +30,7 @@ export const IndividualImage = ({index, id, regular, alt_description}) => {
           };
         }
         else {
+          console.log("Adding")
           action = {
             type: "ADD_FAV",
             payload: {
@@ -62,13 +64,13 @@ export const IndividualImage = ({index, id, regular, alt_description}) => {
     };
 
     return (
-        <li key={index} className="img-list-item" data-testid="img-list-item"> { 
+        <li className="img-list-item" data-testid="img-list-item"> { 
             <div className="img-container" data-testid="img-container">
               <button
                 className="favourite-button"
                 data-testid="favourite-button"
                 aria-label="favourite button"
-                onClick={() => {handleFavorite()}}
+                onClick={() => {handleFavourite(id, regular, alt_description)}}
               >
                 <span className="cover favourite-icon"> 
                   <FaHeart color={isFavourite ? "red" : isLightTheme ? "black" : "white"} /> 

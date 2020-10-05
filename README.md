@@ -1,6 +1,8 @@
 # Image Search
 
-Image Search is a simple web application that displays images using Unsplash API.
+Image Search is a responsive web application where the user can search, bookmark and download hundreds of high definition images. <br />
+![build](https://github.com/sammy9867/image-search/workflows/GitHub%20CI/CD/badge.svg)
+![License](https://img.shields.io/github/license/sammy9867/image-search)
 
 ## Getting Started
 The following instructions will help you to get a copy of the project up and running on your local machine for development and testing purposes.

@@ -2,21 +2,76 @@ import React, { useState } from 'react';
 import { SearchBar } from './search/SearchBar';
 import { FaBars, FaHeart, FaHome, FaMoon } from 'react-icons/fa';
 import { AiOutlineClose  } from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { useThemeValue } from '../../context';
+import { Link, useLocation } from 'react-router-dom';
+import { useThemeValue } from '../../context'
 import './Header.css';
 
 export const Header = () => {
 
     const { isLightTheme, setIsLightTheme } = useThemeValue();
     const [sideBar, setSideBar] = useState(false);  
+
+    const location = useLocation();
+    const [isHome, setIsHome] = useState(location.pathname === "/image-search" ? true : false);  
+    const [isFav, setIsFav] = useState(location.pathname === "/image-search/favourite" ? true : false);  
         
     const getNavClassName = () => {
-        let className = "sidebar";
+        var className = "sidebar";
         className += isLightTheme ? " sidebar-light" : " sidebar-dark";
         className += sideBar ? " sidebar-active" : "";
         return className;
     }
+
+    const setHome = () => {
+        setSideBar(!sideBar);
+        setIsHome(true);
+        setIsFav(false);
+    }
+
+    const setFav = () => {
+        setSideBar(!sideBar);
+        setIsHome(false);
+        setIsFav(true);
+    }
+
+
+    const setNavIconColorForHome = () => {
+        let color = "";
+        color = isLightTheme ? "black" : "white";
+        if(isHome && isLightTheme) color = "#34a1cd";    
+        else if(isHome && !isLightTheme) color = "#ade6e6";
+        return color;
+    }
+
+
+    const setNavIconColorForFav = () => {
+        let color = "";
+        color = isLightTheme ? "black" : "white";
+        if(isFav && isLightTheme) color = "#34a1cd";    
+        else if(isFav && !isLightTheme) color = "#ade6e6";
+        return color;
+    }
+
+
+    const setNavTextColorForHome = () => {
+        let className = "nav-text";
+        if(isHome && isLightTheme) className += " nav-selected-light";
+        else if(isHome && !isLightTheme) className += " nav-selected-dark";
+        else if(isLightTheme) className += " nav-light" 
+        else className += " nav-dark";
+        return className
+    }
+
+
+    const setNavTextColorForFav = () => {
+        let className = "nav-text";
+        if(isFav && isLightTheme) className += " nav-selected-light";
+        else if(isFav && !isLightTheme) className += " nav-selected-dark";
+        else if(isLightTheme) className += " nav-light" 
+        else className += " nav-dark";
+        return className
+    }
+
 
     return (
         <header 
@@ -26,17 +81,17 @@ export const Header = () => {
             <span className="searchBar"> <SearchBar /> </span>
             <nav className={getNavClassName()}>
                 <ul className="topbar-items">
-                    <li className="navbar-li" data-testid="home-link" onClick={() => {setSideBar(!sideBar)}}>
-                        <Link to="/image-search">
-                             <span className="nav-visibility"> <FaHome color={isLightTheme ? "black" : "white"}/> </span>
-                             <span className={isLightTheme ? "nav-text nav-light" : "nav-text nav-dark"} ><b>Home</b></span>
+                    <li className="navbar-li" data-testid="home-link" >
+                        <Link to="/image-search" onClick={() => { setHome()}}>
+                             <span className="nav-visibility"> <FaHome color={setNavIconColorForHome()}/> </span>
+                             <span className={setNavTextColorForHome()} ><b>Home</b></span>
                         </Link>
                     </li>
 
-                     <li className="navbar-li" data-testid="fav-link" onClick={() => {setSideBar(!sideBar)}}>
-                        <Link to="/image-search/favourite">
-                            <span className="nav-visibility"> <FaHeart color={isLightTheme ? "black" : "white"}/> </span>
-                            <span className={isLightTheme ? "nav-text nav-light" : "nav-text nav-dark"}><b>Favourite</b></span>
+                     <li className="navbar-li" data-testid="fav-link">
+                        <Link to="/image-search/favourite" onClick={() => {setFav()}}>
+                            <span className="nav-visibility"> <FaHeart color={setNavIconColorForFav()}/> </span>
+                            <span className={setNavTextColorForFav()}><b>Favourite</b></span>
                         </Link>
                     </li>
 
@@ -49,8 +104,9 @@ export const Header = () => {
                             <input 
                                 aria-label="switch-theme"
                                 type="checkbox" 
-                                checked={!isLightTheme}
-                                onClick={() => setIsLightTheme(!isLightTheme)} />
+                                onClick={() => setIsLightTheme(!isLightTheme)} 
+                                onChange={e => {}}
+                                checked={!isLightTheme}/>
                             <span className="check"></span>
                         </label>
                     </li>                    
