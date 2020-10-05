@@ -12,8 +12,8 @@ export const Header = () => {
     const [sideBar, setSideBar] = useState(false);  
 
     const location = useLocation();
-    const [isHome, setIsHome] = useState(location.pathname === "/image-search" ? true : false);  
-    const [isFav, setIsFav] = useState(location.pathname === "/image-search/favourite" ? true : false);  
+    const [isHome, setIsHome] = useState(location.pathname === "/" ? true : false);  
+    const [isFav, setIsFav] = useState(location.pathname === "/favourite" ? true : false);  
         
     const getNavClassName = () => {
         var className = "sidebar";
@@ -82,14 +82,14 @@ export const Header = () => {
             <nav className={getNavClassName()}>
                 <ul className="topbar-items">
                     <li className="navbar-li" data-testid="home-link" >
-                        <Link to="/image-search" onClick={() => { setHome()}}>
+                        <Link to="/" onClick={() => { setHome()}}>
                              <span className="nav-visibility"> <FaHome color={setNavIconColorForHome()}/> </span>
                              <span className={setNavTextColorForHome()} ><b>Home</b></span>
                         </Link>
                     </li>
 
                      <li className="navbar-li" data-testid="fav-link">
-                        <Link to="/image-search/favourite" onClick={() => {setFav()}}>
+                        <Link to="/favourite" onClick={() => {setFav()}}>
                             <span className="nav-visibility"> <FaHeart color={setNavIconColorForFav()}/> </span>
                             <span className={setNavTextColorForFav()}><b>Favourite</b></span>
                         </Link>

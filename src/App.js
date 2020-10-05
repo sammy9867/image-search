@@ -3,7 +3,7 @@ import { ThemeContextProvider, FavouriteContextProvider, SearchQueryContextProvi
 import { Home, Favourite, Error } from './views';
 import { Header } from './components';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
@@ -15,13 +15,13 @@ export const App = () => {
       <ThemeContextProvider>
           <FavouriteContextProvider>
             <SearchQueryContextProvider>
-              <Router>
+              <Router basename="/">
                   <Header /> 
                   <Switch>
-                      <Route exact path="/image-search">
+                      <Route exact path="/">
                           <Home />
                       </Route>
-                      <Route exact path="/image-search/favourite">
+                      <Route exact path="/favourite">
                           <Favourite />
                       </Route>
                       <Router path="*">
